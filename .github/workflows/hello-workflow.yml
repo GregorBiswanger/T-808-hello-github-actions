@@ -4,7 +4,13 @@ env:
   GLOBAL_MESSAGE: Hallo aus dem Workflow (Global)
 
 # Events
-on: push
+on: 
+  push:
+    branches: 
+      - main
+      - 'featue/**'
+      - '!feature/old'
+  workflow_dispatch: # vieeeeeeeeeeel mehr möglichkeiten....
 
 # Jobs
 jobs:
