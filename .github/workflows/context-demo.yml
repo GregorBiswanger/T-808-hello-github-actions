@@ -3,13 +3,22 @@ name: Context Demo
 on: 
     push:
     workflow_dispatch:
+      inputs:
+        environment:
+          description: Umgebung festlegen
+          required: true
+          default: Development
+          type: choice
+          options:
+            - Production
+            - Development
 
 jobs:
     analysis:
         runs-on: ubuntu-latest
         outputs:
           secret-message: ${{ steps.secretMessage.outputs.message }}
-        environment: Production
+        environment: ${{ github.event.inputs.environment }}
 
         steps:     
         
